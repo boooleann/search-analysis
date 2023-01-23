@@ -57,15 +57,36 @@ def lin_search(seq, el):
     # Element does not exist in sequence, returns None
     return None
 
+
 def bin_search(seq, el):
     """Performs a binary search to find el.
 
     Args:
         seq (sequence[comparable]): SORTED sequence of elements
         el (comparable): element to be found
-        
+
     Returns:
         integer | None: index of el if exists, None if not
     """
-    
-    
+
+    beg = 0
+    end = len(seq) - 1
+
+    # Splitting sequence in half until el is found
+    while (beg <= end):
+        # Middle index of the sequence
+        mid = (end - beg) // 2
+
+        # Locating where el should be
+        if seq[mid] == el:
+            return mid
+        elif seq[mid] > el:
+            end = mid - 1
+        else:
+            beg = mid + 1
+
+    # El does not exist in sequence
+    return None
+
+
+
