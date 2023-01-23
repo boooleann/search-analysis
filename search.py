@@ -35,3 +35,37 @@ def merge_sort(seq):
             seq[k] = second_seq[j]
             j += 1
             k += 1
+
+
+def lin_search(seq, el):
+    """Performs a linear search to find el
+
+    Args:
+        el (any): element to be found
+        seq (sequence): sequence to find el in
+
+    Returns:
+        integer | None: index of el if exists, None if not
+    """
+
+    # Loop through seq until element found or end is reached
+    for i in range(len(seq)):
+        # Return index if element was found
+        if seq[i] == el:
+            return i
+
+    # Element does not exist in sequence, returns None
+    return None
+
+def bin_search(seq, el):
+    """Performs a binary search to find el.
+
+    Args:
+        seq (sequence[comparable]): SORTED sequence of elements
+        el (comparable): element to be found
+        
+    Returns:
+        integer | None: index of el if exists, None if not
+    """
+    
+    
