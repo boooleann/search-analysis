@@ -1,3 +1,6 @@
+import random
+
+# Code modified from https://www.scaler.com/topics/merge-sort-in-python/
 def merge_sort(seq):
     # Reccurisive case
     if len(seq) > 1:
@@ -87,3 +90,11 @@ def bin_search(seq, el):
 
     # El does not exist in sequence
     return None
+
+# Seed
+random.seed(12345)
+
+# Experimenting with multiple "n" values
+for n in [100, 1000, 10_000]:
+    list_source = random.sample(range(0, 1_000_000), n)
+    print(list_source)
