@@ -75,7 +75,7 @@ def bin_search(seq, el):
     # Splitting sequence in half until el is found
     while (beg <= end):
         # Middle index of the sequence
-        mid = (end - beg) // 2
+        mid = (end + beg) // 2
 
         # Locating where el should be
         if seq[mid] == el:
@@ -87,6 +87,3 @@ def bin_search(seq, el):
 
     # El does not exist in sequence
     return None
-
-
-
