@@ -1,6 +1,9 @@
 import random
+from time import time
 
 # Code modified from https://www.scaler.com/topics/merge-sort-in-python/
+
+
 def merge_sort(seq):
     # Reccurisive case
     if len(seq) > 1:
@@ -91,10 +94,58 @@ def bin_search(seq, el):
     # El does not exist in sequence
     return None
 
+
 # Seed
 random.seed(12345)
 
+
+def generate_list_target(list_source, k):
+    """Generate list of elements to be searched. First half will be in list_source, second half not
+
+    Args:
+        list_source (list): List of elements
+        k (integer): Length of list target
+    """
+
+    # List of elements to search for. First half are in list_source, second half are not
+    list_target = random.sample(list_source, round(
+        k / 2)) + random.sample(range(max(list_source), max(list_source) * 2), round(k / 2))
+
+    return list_target
+
+
 # Experimenting with multiple "n" values
 for n in [100, 1000, 10_000]:
+    # Source of numbers to be searched
     list_source = random.sample(range(0, 1_000_000), n)
-    print(list_source)
+
+    print("n = ", n)
+    # Checking time to search for arbitrary amount of elements
+    for k in range(1, n, n // 10):
+        # Elements to search for
+        list_target = generate_list_target(list_source, k)
+
+        # Linear searching
+        st = time()
+        for el in list_target:
+            lin_search(list_source, el)
+        et = time()
+        lin_time = et - st
+
+        # Binary searching
+        # List copy so original list does not get sorted
+        sorted_list = list_source[:]
+
+        st = time()
+        # Sorting list
+        merge_sort(sorted_list)
+
+        # binary searching for each element in list_target
+        for el in list_target:
+            bin_search(sorted_list, el)
+        et = time()
+        bin_time = et - st
+
+        print(f"k = {k}, lin: {lin_time}s, bin: {bin_time}s")
+
+    print()
