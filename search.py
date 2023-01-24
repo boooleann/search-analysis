@@ -119,9 +119,14 @@ for n in [100, 1000, 10_000]:
     # Source of numbers to be searched
     list_source = random.sample(range(0, 1_000_000), n)
 
+    # Displaying amount of elements in source
     print("n = ", n)
-    # Checking time to search for arbitrary amount of elements
-    for k in range(1, n, n // 10):
+
+    # Amount of elements to be searching for
+    k = 1
+
+    # Testing linear and binary search algorithms with different numbers of search elements.
+    while k < n:
         # Elements to search for
         list_target = generate_list_target(list_source, k)
 
@@ -146,6 +151,13 @@ for n in [100, 1000, 10_000]:
         et = time()
         bin_time = et - st
 
-        print(f"k = {k}, lin: {lin_time}s, bin: {bin_time}s")
+        # Displaying results of current amount of search terms
+        print("k = %d, lin: %.4fs, bin: %.4fs" % (k, lin_time, bin_time))
+
+        # Incrementing amount of elements
+        if lin_time < bin_time:
+            k += 5
+        else:
+            k += n // 10
 
     print()
