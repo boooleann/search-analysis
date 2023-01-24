@@ -109,7 +109,7 @@ def generate_list_target(list_source, k):
 
     # List of elements to search for. First half are in list_source, second half are not
     list_target = random.sample(list_source, round(
-        k / 2)) + random.sample(range(max(list_source), max(list_source) * 2), round(k / 2))
+        k / 2)) + random.sample(range(len(list_source), len(list_source) * 2), round(k / 2))
 
     return list_target
 
