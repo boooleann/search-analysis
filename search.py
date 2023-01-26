@@ -160,4 +160,5 @@ for n in [100, 1000, 10_000]:
         else:
             k += n // 10
 
+    # Displaying empty line for clearity
     print()
