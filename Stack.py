@@ -1,3 +1,4 @@
+# Stack code from class lectures
 class Stack:
     def __init__(self):
         self.items = []
